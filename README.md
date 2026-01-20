@@ -1,36 +1,41 @@
-# Assignment
+# Login & Signup UI – Technical Round Assignment
 
-📌 Project Overview
-This project implements a responsive Login and Signup user interface using HTML, CSS, and JavaScript.
-It focuses on clean UI design, proper form validations, and maintainable code structure as required for a technical evaluation round.
-The application demonstrates core front-end fundamentals without using any external frameworks.
+## Project Overview
+This project demonstrates a responsive Login and Signup interface built using
+HTML, CSS, and JavaScript. It focuses on clean UI design, client-side validation,
+and readable, maintainable code.
 
-🛠️ Technologies Used
-HTML5 – Structure of the application
-CSS3 – Styling and layout
-JavaScript (ES6) – Form validation and UI interactions.
+## Technologies Used
+- HTML5
+- CSS3
+- JavaScript (ES6)
 
-✨ Features
-Clean and minimal Login & Signup UI
-Toggle between Login and Signup forms
-Client-side form validation
-Inline error messages for better user experience
-Responsive and professional layout
-Modular and readable code
+## Features
+- Login and Signup forms
+- Toggle between forms
+- Client-side form validation
+- Inline error messages
+- Professional UI with background image
 
-✅ Validations Implemented
+## Validations Implemented
 
-🔐 Login Form
-Email field is mandatory
-Password must be at least 6 characters
+## Login
+- Email is required
+- Password must be at least 6 characters
 
-📝 Signup Form
-Name field is mandatory
-Email field is mandatory
-Password must be at least 6 characters
-All validations are handled using JavaScript with user-friendly error messages displayed below input fields.
+## Signup
+- Name is required
+- Email is required
+- Password must be at least 6 characters
 
-▶️ How to Run the Project
-Download or clone the project files
-Open index.html in any modern web browser
-Use the Login or Signup forms to test validations
+## How to Run
+1. Save the file as `index.html`
+2. Open it in any modern web browser
+
+## Notes
+- This is a UI-focused implementation
+- Backend integration can be added easily
+- Designed for technical interview evaluation
+
+## Author
+Avantika More
