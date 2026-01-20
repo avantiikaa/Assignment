@@ -1,0 +1,209 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Authentication</title>
+  <style>
+    /* ---------- Global Styles ---------- */
+    * {
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f4f6f8;
+    }
+
+    /* ---------- Container ---------- */
+    .auth-container {
+      width: 360px;
+      background: #ffffff;
+      padding: 24px;
+      border-radius: 8px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    }
+
+    .auth-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    /* ---------- Form Elements ---------- */
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: #4f46e5;
+    }
+
+    .error {
+      font-size: 12px;
+      color: #d93025;
+      margin-top: 4px;
+    }
+
+    /* ---------- Button ---------- */
+    .btn {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      background-color: #4f46e5;
+      color: #fff;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #4338ca;
+    }
+
+    /* ---------- Toggle Text ---------- */
+    .toggle-text {
+      text-align: center;
+      margin-top: 14px;
+      font-size: 14px;
+      color: #4f46e5;
+      cursor: pointer;
+    }
+
+    .toggle-text:hover {
+      text-decoration: underline;
+    }
+  </style></head>
+<body>  <div class="auth-container"><!-- Login Form -->
+<form id="loginForm">
+  <h2>Login</h2>
+
+  <div class="form-group">
+    <input type="email" id="loginEmail" placeholder="Email address" />
+    <div class="error" id="loginEmailError"></div>
+  </div>
+
+  <div class="form-group">
+    <input type="password" id="loginPassword" placeholder="Password" />
+    <div class="error" id="loginPasswordError"></div>
+  </div>
+
+  <button type="submit" class="btn">Login</button>
+
+  <div class="toggle-text" onclick="showSignup()">
+    New user? Create an account
+  </div>
+</form>
+
+<!-- Signup Form -->
+<form id="signupForm" style="display: none;">
+  <h2>Create Account</h2>
+
+  <div class="form-group">
+    <input type="text" id="signupName" placeholder="Full name" />
+    <div class="error" id="signupNameError"></div>
+  </div>
+
+  <div class="form-group">
+    <input type="email" id="signupEmail" placeholder="Email address" />
+    <div class="error" id="signupEmailError"></div>
+  </div>
+
+  <div class="form-group">
+    <input type="password" id="signupPassword" placeholder="Password" />
+    <div class="error" id="signupPasswordError"></div>
+  </div>
+
+  <button type="submit" class="btn">Signup</button>
+
+  <div class="toggle-text" onclick="showLogin()">
+    Already have an account? Login
+  </div>
+</form>
+
+  </div>  <!-- ---------- JavaScript Logic ---------- -->  <script>
+    /* Toggle between forms */
+    function showSignup() {
+      document.getElementById("loginForm").style.display = "none";
+      document.getElementById("signupForm").style.display = "block";
+    }
+
+    function showLogin() {
+      document.getElementById("signupForm").style.display = "none";
+      document.getElementById("loginForm").style.display = "block";
+    }
+
+    /* Login Validation */
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const email = loginEmail.value.trim();
+      const password = loginPassword.value.trim();
+      let isValid = true;
+
+      loginEmailError.innerText = "";
+      loginPasswordError.innerText = "";
+
+      if (email === "") {
+        loginEmailError.innerText = "Email is required.";
+        isValid = false;
+      }
+
+      if (password.length < 6) {
+        loginPasswordError.innerText = "Password must be at least 6 characters.";
+        isValid = false;
+      }
+
+      if (isValid) {
+        alert("Login successful (demo)");
+      }
+    });
+
+    /* Signup Validation */
+    document.getElementById("signupForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const name = signupName.value.trim();
+      const email = signupEmail.value.trim();
+      const password = signupPassword.value.trim();
+      let isValid = true;
+
+      signupNameError.innerText = "";
+      signupEmailError.innerText = "";
+      signupPasswordError.innerText = "";
+
+      if (name === "") {
+        signupNameError.innerText = "Name is required.";
+        isValid = false;
+      }
+
+      if (email === "") {
+        signupEmailError.innerText = "Email is required.";
+        isValid = false;
+      }
+
+      if (password.length < 6) {
+        signupPasswordError.innerText = "Password must be at least 6 characters.";
+        isValid = false;
+      }
+
+      if (isValid) {
+        alert("Account created successfully (demo)");
+        showLogin();
+      }
+    });
+  </script></body>
+</html>
