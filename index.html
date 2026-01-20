@@ -1,8 +1,10 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>User Authentication</title>
+
   <style>
     /* ---------- Global Styles ---------- */
     * {
@@ -16,7 +18,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #f4f6f8;
+      background: 
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+        url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f");
+      background-size: cover;
+      background-position: center;
     }
 
     /* ---------- Container ---------- */
@@ -25,7 +31,7 @@
       background: #ffffff;
       padding: 24px;
       border-radius: 8px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
     }
 
     .auth-container h2 {
@@ -86,116 +92,115 @@
     .toggle-text:hover {
       text-decoration: underline;
     }
-  </style></head>
-<body>  <div class="auth-container"><!-- Login Form -->
-<form id="loginForm">
-  <h2>Login</h2>
+  </style>
+</head>
 
-  <div class="form-group">
-    <input type="email" id="loginEmail" placeholder="Email address" />
-    <div class="error" id="loginEmailError"></div>
+<body>
+
+  <div class="auth-container">
+
+    <!-- Login Form -->
+    <form id="loginForm">
+      <h2>Login</h2>
+
+      <div class="form-group">
+        <input type="email" id="loginEmail" placeholder="Email address" />
+        <div class="error" id="loginEmailError"></div>
+      </div>
+
+      <div class="form-group">
+        <input type="password" id="loginPassword" placeholder="Password" />
+        <div class="error" id="loginPasswordError"></div>
+      </div>
+
+      <button type="submit" class="btn">Login</button>
+
+      <div class="toggle-text" onclick="showSignup()">
+        New user? Create an account
+      </div>
+    </form>
+
+    <!-- Signup Form -->
+    <form id="signupForm" style="display: none;">
+      <h2>Create Account</h2>
+
+      <div class="form-group">
+        <input type="text" id="signupName" placeholder="Full name" />
+        <div class="error" id="signupNameError"></div>
+      </div>
+
+      <div class="form-group">
+        <input type="email" id="signupEmail" placeholder="Email address" />
+        <div class="error" id="signupEmailError"></div>
+      </div>
+
+      <div class="form-group">
+        <input type="password" id="signupPassword" placeholder="Password" />
+        <div class="error" id="signupPasswordError"></div>
+      </div>
+
+      <button type="submit" class="btn">Signup</button>
+
+      <div class="toggle-text" onclick="showLogin()">
+        Already have an account? Login
+      </div>
+    </form>
+
   </div>
 
-  <div class="form-group">
-    <input type="password" id="loginPassword" placeholder="Password" />
-    <div class="error" id="loginPasswordError"></div>
-  </div>
-
-  <button type="submit" class="btn">Login</button>
-
-  <div class="toggle-text" onclick="showSignup()">
-    New user? Create an account
-  </div>
-</form>
-
-<!-- Signup Form -->
-<form id="signupForm" style="display: none;">
-  <h2>Create Account</h2>
-
-  <div class="form-group">
-    <input type="text" id="signupName" placeholder="Full name" />
-    <div class="error" id="signupNameError"></div>
-  </div>
-
-  <div class="form-group">
-    <input type="email" id="signupEmail" placeholder="Email address" />
-    <div class="error" id="signupEmailError"></div>
-  </div>
-
-  <div class="form-group">
-    <input type="password" id="signupPassword" placeholder="Password" />
-    <div class="error" id="signupPasswordError"></div>
-  </div>
-
-  <button type="submit" class="btn">Signup</button>
-
-  <div class="toggle-text" onclick="showLogin()">
-    Already have an account? Login
-  </div>
-</form>
-
-  </div>  <!-- ---------- JavaScript Logic ---------- -->  <script>
-    /* Toggle between forms */
+  <!-- ---------- JavaScript ---------- -->
+  <script>
     function showSignup() {
-      document.getElementById("loginForm").style.display = "none";
-      document.getElementById("signupForm").style.display = "block";
+      loginForm.style.display = "none";
+      signupForm.style.display = "block";
     }
 
     function showLogin() {
-      document.getElementById("signupForm").style.display = "none";
-      document.getElementById("loginForm").style.display = "block";
+      signupForm.style.display = "none";
+      loginForm.style.display = "block";
     }
 
-    /* Login Validation */
-    document.getElementById("loginForm").addEventListener("submit", function (e) {
+    // Login Validation
+    loginForm.addEventListener("submit", function (e) {
       e.preventDefault();
 
-      const email = loginEmail.value.trim();
-      const password = loginPassword.value.trim();
       let isValid = true;
-
       loginEmailError.innerText = "";
       loginPasswordError.innerText = "";
 
-      if (email === "") {
+      if (loginEmail.value.trim() === "") {
         loginEmailError.innerText = "Email is required.";
         isValid = false;
       }
 
-      if (password.length < 6) {
+      if (loginPassword.value.trim().length < 6) {
         loginPasswordError.innerText = "Password must be at least 6 characters.";
         isValid = false;
       }
 
-      if (isValid) {
-        alert("Login successful (demo)");
-      }
+      if (isValid) alert("Login successful (demo)");
     });
 
-    /* Signup Validation */
-    document.getElementById("signupForm").addEventListener("submit", function (e) {
+    // Signup Validation
+    signupForm.addEventListener("submit", function (e) {
       e.preventDefault();
 
-      const name = signupName.value.trim();
-      const email = signupEmail.value.trim();
-      const password = signupPassword.value.trim();
       let isValid = true;
-
       signupNameError.innerText = "";
       signupEmailError.innerText = "";
       signupPasswordError.innerText = "";
 
-      if (name === "") {
+      if (signupName.value.trim() === "") {
         signupNameError.innerText = "Name is required.";
         isValid = false;
       }
 
-      if (email === "") {
+      if (signupEmail.value.trim() === "") {
         signupEmailError.innerText = "Email is required.";
         isValid = false;
       }
 
-      if (password.length < 6) {
+      if (signupPassword.value.trim().length < 6) {
         signupPasswordError.innerText = "Password must be at least 6 characters.";
         isValid = false;
       }
@@ -205,5 +210,7 @@
         showLogin();
       }
     });
-  </script></body>
+  </script>
+
+</body>
 </html>
